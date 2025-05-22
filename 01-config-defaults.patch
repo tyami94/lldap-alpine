@@ -1,0 +1,21 @@
+diff --git a/lldap_config.docker_template.toml b/lldap_config.docker_template.toml
+index 05e63ef..443fcb9 100644
+--- a/lldap_config.docker_template.toml
++++ b/lldap_config.docker_template.toml
+@@ -34,6 +34,7 @@
+ #http_url = "http://localhost"
+ 
+ ## The path to the front-end assets (relative to the working directory).
++## Alpine Linux Note: This parameter must be edited in /etc/conf.d/lldap if using the packaged init script.
+ #assets_path = "./app"
+ 
+ ## Random secret for JWT signature.
+@@ -99,7 +100,7 @@
+ ##  - "mysql://mysql-user:password@mysql-server/my-database"
+ ##
+ ## This can be overridden with the LLDAP_DATABASE_URL env variable.
+-database_url = "sqlite:///data/users.db?mode=rwc"
++database_url = "sqlite://./users.db?mode=rwc"
+ 
+ ## Private key file.
+ ## Not recommended, use key_seed instead.

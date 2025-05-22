@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+svc_user=lldap
+svc_group=${svc_user}
+
+addgroup -S ${svc_group} 2>/dev/null
+adduser -S -D -h /var/lib/${svc_user} -s /sbin/nologin -G ${svc_group} -g ${svc_user} ${svc_user} 2>/dev/null
+
+exit 0

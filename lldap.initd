@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+
+description="Light LDAP implementation for authentication"
+
+: ${LLDAP_CONFIG_FILE:="/etc/lldap.toml"}
+: ${LLDAP_ASSETS_PATH:="/usr/share/webapps/lldap"}
+: ${directory:="/var/lib/lldap"}
+: ${user:="lldap"}
+: ${group:="lldap"}
+: ${logfile:="/var/log/${RC_SVCNAME}.log"}
+: ${errlogfile:="/var/log/${RC_SVCNAME}.err"}
+
+command="/usr/bin/lldap"
+command_user="$user:$group"
+command_args="run"
+command_background="yes"
+pidfile="/run/$RC_SVCNAME.pid"
+output_log="$logfile"
+error_log="$errlogfile"
+
+start_pre() {
+        checkpath -m 0750 -o "$user:$group" -f "$LLDAP_CONFIG_FILE" || return 1
+        checkpath -m 0640 -o "$user:$group" -f "$logfile" || return 1
+        checkpath -m 0640 -o "$user:$group" -f "$errlogfile" || return 1
+        export LLDAP_CONFIG_FILE LLDAP_ASSETS_PATH
+}

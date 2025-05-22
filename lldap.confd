@@ -1,0 +1,22 @@
+# Configuration for /etc/init.d/lldap
+
+# Path to lldap configuration file
+#LLDAP_CONFIG_FILE="/etc/lldap.toml"
+
+# Path to lldap assets
+#LLDAP_ASSETS_PATH="/usr/share/webapps/lldap"
+
+# Working directory
+#directory="/var/lib/lldap"
+
+# User to run as
+#user="lldap"
+
+# Group to run as
+#group="lldap"
+
+# File to log stdout to
+#logfile="/var/log/lldap.log"
+
+# File to log stderr to
+#errlogfile="/var/log/lldap.err"
